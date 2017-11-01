@@ -22,6 +22,8 @@
 		F0EE34461FAA1418003DA080 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F0EE34491FAA1418003DA080 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F0EE344B1FAA1418003DA080 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0EE34511FAA158E003DA080 /* exampleList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = exampleList.plist; sourceTree = "<group>"; };
+		F0EE34521FAA158E003DA080 /* resultList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = resultList.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,8 @@
 				F0EE34461FAA1418003DA080 /* Assets.xcassets */,
 				F0EE34481FAA1418003DA080 /* LaunchScreen.storyboard */,
 				F0EE344B1FAA1418003DA080 /* Info.plist */,
+				F0EE34511FAA158E003DA080 /* exampleList.plist */,
+				F0EE34521FAA158E003DA080 /* resultList.plist */,
 			);
 			path = SemiHackathon;
 			sourceTree = "<group>";
