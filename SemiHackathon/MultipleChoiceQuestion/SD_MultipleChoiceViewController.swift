@@ -17,30 +17,27 @@ class SD_MultipleChoiceViewController: UIViewController, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return DataHandler.main.questions.count
     }
-//    func generateRandomNumber() -> [Int]{
-//        var randNums: [Int] = []
-//        while randNums.count < 4{
-//            let num = Int(arc4random() % 4)
-//            if !randNums.contains(num){
-//                randNums.append(num)
-//            }
-//        }
-//        return randNums
-//    }
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! SD_QuestionCell
         let question = DataHandler.main.questions[indexPath.row]
-//        let nums = generateRandomNumber()
         cell.q1Button.setTitle(question.options[0].0, for: .normal)
         cell.q2Button.setTitle(question.options[1].0, for: .normal)
         cell.q3Button.setTitle(question.options[2].0, for: .normal)
         cell.q4Button.setTitle(question.options[3].0, for: .normal)
+        let randomNumbers = generateRandomArray(with: 4)
+        
+        cell.q1Button.setTitle(question.options[randomNumbers[0]].0, for: .normal)
+        cell.q2Button.setTitle(question.options[randomNumbers[1]].0, for: .normal)
+        cell.q3Button.setTitle(question.options[randomNumbers[2]].0, for: .normal)
+        cell.q4Button.setTitle(question.options[randomNumbers[3]].0, for: .normal)
         
         cell.setClosure {(buttonTag:Int) in
-            User.main.increaseScore(of: question.options[buttonTag].1)
-            print(question.options[buttonTag].1)
+            
+            User.main.increaseScore(of: question.options[randomNumbers[buttonTag]].1)
+            print(question.options[randomNumbers[buttonTag]].1)
             if indexPath.row < DataHandler.main.questions.count - 1{
                 let offset = CGPoint(x: CGFloat(indexPath.row + 1) * cell.frame.width, y: 0)
                 collectionView.setContentOffset(offset, animated: true)
@@ -49,9 +46,7 @@ class SD_MultipleChoiceViewController: UIViewController, UICollectionViewDataSou
                 vc.delegate = self
                 self.present(vc, animated: true, completion: nil)
             }
-            
-            
-            
+
         }
         return cell
     }
