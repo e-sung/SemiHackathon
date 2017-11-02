@@ -38,20 +38,12 @@ struct User{
         }
         return Point(x: x, y: y)
     }
-    
-    var typeResult: String {
-        if let path = Bundle.main.path(forResource: "resultList", ofType: "plist"){
-            if let dict = NSDictionary(contentsOfFile: path)  as? [String: [String: Any]]{
-                
-            }
-        }
-    }
-    
-    var scoreResult: [String: Int] {
-        var result: [String: Int] = [:]
-        for (type, score) in resultScoreByType{
-            result[type.rawValue] = Int(score)
-        }
-        return result
-    }
+
+//    var personalityType: PersonalityType {
+//        var result: [String: Int] = [:]
+//        for (type, score) in resultScoreByType{
+//            result[type.rawValue] = Int(score)
+//        }
+//        return result
+//    }
 }

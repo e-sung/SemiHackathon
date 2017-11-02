@@ -20,8 +20,8 @@ class ResultViewController: UIViewController {
     
     let textView: UITextView = {
         let tv = UITextView()
-        
-    }
+        return tv
+    }()
     
     
     
@@ -51,10 +51,8 @@ class ResultViewController: UIViewController {
         coordinates.addPoint(point: user.point)
         print(user.point)
         mainView.draw(coordinates: coordinates)
-        
     }
-    
-    
+
     
 }
 

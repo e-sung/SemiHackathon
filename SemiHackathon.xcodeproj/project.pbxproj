@@ -11,6 +11,7 @@
 		9B0D9D081FAAC4A700F42682 /* SJQuestionDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0D9D061FAAC4A700F42682 /* SJQuestionDataModel.swift */; };
 		9B0D9D0A1FAAC4CD00F42682 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0D9D091FAAC4CD00F42682 /* ResultViewController.swift */; };
 		9B0D9D0C1FAACBA300F42682 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0D9D0B1FAACBA300F42682 /* Coordinates.swift */; };
+		9B0D9D0D1FAAE1FB00F42682 /* resultList.plist in Resources */ = {isa = PBXBuildFile; fileRef = F0EE34521FAA158E003DA080 /* resultList.plist */; };
 		F0EE34401FAA1418003DA080 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EE343F1FAA1418003DA080 /* AppDelegate.swift */; };
 		F0EE34421FAA1418003DA080 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EE34411FAA1418003DA080 /* ViewController.swift */; };
 		F0EE34451FAA1418003DA080 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0EE34431FAA1418003DA080 /* Main.storyboard */; };
@@ -140,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0EE344A1FAA1418003DA080 /* LaunchScreen.storyboard in Resources */,
+				9B0D9D0D1FAAE1FB00F42682 /* resultList.plist in Resources */,
 				F0EE34471FAA1418003DA080 /* Assets.xcassets in Resources */,
 				F0EE34451FAA1418003DA080 /* Main.storyboard in Resources */,
 			);
