@@ -8,7 +8,11 @@
 
 import UIKit
 
-class SD_MultipleChoiceViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+class SD_MultipleChoiceViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, ResultViewControllerDelegate{
+    func dismissCalled() {
+        dismiss(animated: false, completion: nil)
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return DataHandler.main.questions.count
@@ -32,7 +36,9 @@ class SD_MultipleChoiceViewController: UIViewController, UICollectionViewDataSou
                 let offset = CGPoint(x: CGFloat(indexPath.row + 1) * cell.frame.width, y: 0)
                 collectionView.setContentOffset(offset, animated: true)
             }else{
-                self.present(ResultViewController(), animated: true, completion: nil)
+                let vc = ResultViewController()
+                vc.delegate = self
+                self.present(vc, animated: true, completion: nil)
             }
             
             
@@ -60,8 +66,6 @@ class SD_MultipleChoiceViewController: UIViewController, UICollectionViewDataSou
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
     /*
     // MARK: - Navigation
 

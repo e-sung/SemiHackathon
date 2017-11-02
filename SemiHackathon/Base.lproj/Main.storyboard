@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="g5o-Y7-bgD">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,6 +10,45 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--View Controller-->
+        <scene sceneID="0ER-tu-pr5">
+            <objects>
+                <viewController id="g5o-Y7-bgD" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6aE-ui-J8C">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K38-AJ-lCA">
+                                <rect key="frame" x="53" y="427" width="268" height="57"/>
+                                <color key="backgroundColor" red="0.3472851515" green="0.92165505889999999" blue="0.7059845924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="시작하기">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clipToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" id="CAJ-hk-Z8g"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="HcU-Cv-edn" firstAttribute="bottom" secondItem="K38-AJ-lCA" secondAttribute="bottom" constant="183" id="0Q6-xW-q3D"/>
+                            <constraint firstItem="K38-AJ-lCA" firstAttribute="top" secondItem="HcU-Cv-edn" secondAttribute="top" constant="407" id="9hy-4a-DNd"/>
+                            <constraint firstItem="K38-AJ-lCA" firstAttribute="centerX" secondItem="HcU-Cv-edn" secondAttribute="centerX" id="GFJ-Jf-27j"/>
+                            <constraint firstItem="K38-AJ-lCA" firstAttribute="leading" secondItem="HcU-Cv-edn" secondAttribute="leading" constant="53" id="O9W-NS-GJf"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="HcU-Cv-edn"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KFN-fG-cf0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-759.20000000000005" y="31.934032983508249"/>
+        </scene>
         <!--Multiple Choice View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>

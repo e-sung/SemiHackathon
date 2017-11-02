@@ -8,8 +8,13 @@
 
 import UIKit
 
+protocol ResultViewControllerDelegate{
+    func dismissCalled()
+}
 
 class ResultViewController: UIViewController {
+    
+    var delegate: ResultViewControllerDelegate?
     
     let coordinatesView: UIView = {
        let view = UIView()
@@ -100,7 +105,7 @@ class ResultViewController: UIViewController {
         textView.setContentOffset(.zero, animated: true)
         
         //버튼 액션 연결
-        
+        returnToMainScreenButton.addTarget(self, action: #selector(returnToMainScreen), for: .touchUpInside)
 
     }
     
@@ -117,6 +122,12 @@ class ResultViewController: UIViewController {
         for i in 0..<coordinatesTypeLabels.count{
             coordinatesTypeLabels[i].frame = CGRect(origin: quadrants[i], size: CGSize(width: labelWidth, height: labelHeight))
             container.addSubview(coordinatesTypeLabels[i])
+        }
+    }
+    
+    @objc func returnToMainScreen(){
+        dismiss(animated: false) {
+            self.delegate?.dismissCalled()
         }
     }
 
