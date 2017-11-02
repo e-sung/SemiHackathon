@@ -15,6 +15,7 @@ enum PersonalityType: String{
     case C = "c"
 }
 
+
 class DataHandler{
     static var main = DataHandler()
     static var results = ResultDataModel()
@@ -79,12 +80,10 @@ struct ResultDataModel{
     }
     mutating func loadData(){
         if let path = Bundle.main.path(forResource: "resultList", ofType: "plist"){
-            print("adding result")
             if let dict = NSDictionary(contentsOfFile: path)  as? [String: [String: Any]]{
                 for (type, result) in dict{
                     if let result = result as? [String: String]{
                         results[type] = Result(data: result)
-                        print("adding result")
                     }
                 }
             }

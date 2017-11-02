@@ -9,8 +9,9 @@
 import UIKit
 
 struct User{
+    static var main = User()
     private var resultScoreByType: [PersonalityType: CGFloat]
-    init(){
+    private init(){
         resultScoreByType = [.D: 0, .I: 0, .S: 0, .C: 0]
     }
     mutating func increaseScore(of type: PersonalityType){

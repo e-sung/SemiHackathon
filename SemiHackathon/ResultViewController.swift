@@ -8,8 +8,13 @@
 
 import UIKit
 
+protocol ResultViewControllerDelegate{
+    func dismissCalled()
+}
 
 class ResultViewController: UIViewController {
+    
+    var delegate: ResultViewControllerDelegate?
     
     let coordinatesView: UIView = {
        let view = UIView()
@@ -46,9 +51,9 @@ class ResultViewController: UIViewController {
         return tv
     }()
     
-    let goToInitialScreenButton: UIButton = {
+    let returnToMainScreenButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("시작화면으로 가기", for: .normal)
+        button.setTitle("처음으로 가기", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.adjustsFontSizeToFitWidth = true
         button.layer.backgroundColor = UIColor.lightGray.cgColor
@@ -57,19 +62,6 @@ class ResultViewController: UIViewController {
         
         return button
     }()
-    
-    let findSimilarPeopleButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("비슷한 사람 보기", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.adjustsFontSizeToFitWidth = true
-        button.layer.backgroundColor = UIColor.lightGray.cgColor
-        button.layer.cornerRadius = 5
-        button.clipsToBounds = true
-        return button
-    }()
-    
-    
     
     
     override func viewDidLoad() {
@@ -77,27 +69,14 @@ class ResultViewController: UIViewController {
         setupViews()
         var coordinates = Coordinates()
         
-        
-        var user = User()
-        user.increaseScore(of: .D)
-        user.increaseScore(of: .D)
-        user.increaseScore(of: .I)
-        user.increaseScore(of: .S)
-        user.increaseScore(of: .S)
-        user.increaseScore(of: .I)
-//        user.increaseScore(of: .I)
-//        user.increaseScore(of: .C)
-//        user.increaseScore(of: .C)
-//        user.increaseScore(of: .D)
-        
-        if let userResult = user.personalityType{
+        if let userResult = User.main.personalityType{
             if let result = DataHandler.results.getResultData(of: userResult){
                 textView.text = result.title + "\n" + result.content
             }
         }
         
-        coordinates.addPoint(point: user.point)
-        print(user.point)
+        coordinates.addPoint(point: User.main.point)
+        print(User.main.point)
         coordinatesView.draw(coordinates: coordinates)
     }
     
@@ -120,15 +99,13 @@ class ResultViewController: UIViewController {
         textView.anchor(top: guessLabel.bottomAnchor, left: coordinatesView.leftAnchor, bottom: nil, right: coordinatesView.rightAnchor, topSpacing: 20, leftSpacing: 0, bottomSpacing: nil, rightSpacing: 0, width: nil, height: nil)
         
         //하단 버튼 추가
-        let stackView = UIStackView(arrangedSubviews: [goToInitialScreenButton, findSimilarPeopleButton])
-        stackView.alignment = .fill
-        stackView.distribution = .fillEqually
-        stackView.axis = .horizontal
-        stackView.spacing = 15
         
-        view.addSubview(stackView)
-        stackView.anchor(top: textView.bottomAnchor, left: coordinatesView.leftAnchor, bottom: view.bottomAnchor, right: coordinatesView.rightAnchor, topSpacing: 20, leftSpacing: 0, bottomSpacing: 30, rightSpacing: 0, width: nil, height: 50)
-        textView.setContentOffset(.zero, animated: false)
+        view.addSubview(returnToMainScreenButton)
+        returnToMainScreenButton.anchor(top: textView.bottomAnchor, left: coordinatesView.leftAnchor, bottom: view.bottomAnchor, right: coordinatesView.rightAnchor, topSpacing: 20, leftSpacing: 0, bottomSpacing: 30, rightSpacing: 0, width: nil, height: 50)
+        textView.setContentOffset(.zero, animated: true)
+        
+        //버튼 액션 연결
+        returnToMainScreenButton.addTarget(self, action: #selector(returnToMainScreen), for: .touchUpInside)
 
     }
     
@@ -147,8 +124,13 @@ class ResultViewController: UIViewController {
             container.addSubview(coordinatesTypeLabels[i])
         }
     }
-
     
+    @objc func returnToMainScreen(){
+        dismiss(animated: false) {
+            self.delegate?.dismissCalled()
+        }
+    }
+
 }
 
 

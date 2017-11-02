@@ -8,7 +8,11 @@
 
 import UIKit
 
-class SD_MultipleChoiceViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+class SD_MultipleChoiceViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, ResultViewControllerDelegate{
+    func dismissCalled() {
+        dismiss(animated: false, completion: nil)
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return DataHandler.main.questions.count
@@ -33,28 +37,30 @@ class SD_MultipleChoiceViewController: UIViewController, UICollectionViewDataSou
             
             self.user.increaseScore(of: question.options[randomNumbers[buttonTag]].1)
             print(question.options[buttonTag].1)
-            
-            let offset = CGPoint(x: CGFloat(indexPath.row + 1) * cell.frame.width, y: 0)
-            collectionView.setContentOffset(offset, animated: true)
-            
-            
+            if indexPath.row < DataHandler.main.questions.count - 1{
+                let offset = CGPoint(x: CGFloat(indexPath.row + 1) * cell.frame.width, y: 0)
+                collectionView.setContentOffset(offset, animated: true)
+            }else{
+                let vc = ResultViewController()
+                vc.delegate = self
+                self.present(vc, animated: true, completion: nil)
+            }
+
         }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return collectionView.frame.size
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height - 20)
     }
     
     @IBOutlet weak var collectionView:UICollectionView!
     
-    var user:User!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
-        self.user = User()
 
         // Do any additional setup after loading the view.
     }
@@ -63,8 +69,6 @@ class SD_MultipleChoiceViewController: UIViewController, UICollectionViewDataSou
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
     /*
     // MARK: - Navigation
 

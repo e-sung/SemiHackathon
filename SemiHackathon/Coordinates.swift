@@ -32,7 +32,7 @@ extension UIView{
     private func drawPoint(point: Point){
         let originPoint = Point(x: bounds.width / 2.0, y: bounds.height / 2.0)
         let pointSize: CGFloat = 5
-        let pointView = UIView(frame: CGRect(x: originPoint.x + (point.x * 10) - (pointSize / 2), y: originPoint.y - (point.y * 10) - (pointSize / 2), width: pointSize, height: pointSize))
+        let pointView = UIView(frame: CGRect(x: originPoint.x + (point.x * 2) - (pointSize / 2), y: originPoint.y - (point.y * 2) - (pointSize / 2), width: pointSize, height: pointSize))
         pointView.backgroundColor = .red
         addSubview(pointView)
     }
