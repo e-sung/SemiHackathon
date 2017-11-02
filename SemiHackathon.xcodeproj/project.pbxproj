@@ -20,6 +20,7 @@
 		F0EE344A1FAA1418003DA080 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0EE34481FAA1418003DA080 /* LaunchScreen.storyboard */; };
 		F0EE345E1FAADD79003DA080 /* SD_MultipleChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EE345D1FAADD79003DA080 /* SD_MultipleChoiceViewController.swift */; };
 		F0FAA8F91FAAF0D400014555 /* SD_QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FAA8F81FAAF0D400014555 /* SD_QuestionCell.swift */; };
+		F0FAA8FB1FAAFC3E00014555 /* exampleList.plist in Resources */ = {isa = PBXBuildFile; fileRef = F0EE34511FAA158E003DA080 /* exampleList.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -157,6 +158,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0FAA8FB1FAAFC3E00014555 /* exampleList.plist in Resources */,
 				F0EE344A1FAA1418003DA080 /* LaunchScreen.storyboard in Resources */,
 				9B0D9D0D1FAAE1FB00F42682 /* resultList.plist in Resources */,
 				F0EE34471FAA1418003DA080 /* Assets.xcassets in Resources */,

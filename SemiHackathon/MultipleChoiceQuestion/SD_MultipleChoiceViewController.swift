@@ -11,14 +11,32 @@ import UIKit
 class SD_MultipleChoiceViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return DataHandler.main.questions.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! SD_QuestionCell
-        cell.setClosure {
+        let question = DataHandler.main.questions[indexPath.row]
+        
+        cell.q1Button.setTitle(question.options[0].0, for: .normal)
+        cell.q2Button.setTitle(question.options[1].0, for: .normal)
+        cell.q3Button.setTitle(question.options[2].0, for: .normal)
+        cell.q4Button.setTitle(question.options[3].0, for: .normal)
+        
+        cell.setClosure {(buttonTag:Int) in
+            if indexPath.row == DataHandler.main.questions.count{
+                    print(user.personalityType)
+            }
+            
+            self.user.increaseScore(of: question.options[buttonTag].1)
+            print(question.options[buttonTag].1)
+            
             let offset = CGPoint(x: CGFloat(indexPath.row + 1) * cell.frame.width, y: 0)
             collectionView.setContentOffset(offset, animated: true)
+            
+            
         }
         return cell
     }
@@ -29,11 +47,13 @@ class SD_MultipleChoiceViewController: UIViewController, UICollectionViewDataSou
     
     @IBOutlet weak var collectionView:UICollectionView!
     
+    var user:User!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
+        self.user = User()
 
         // Do any additional setup after loading the view.
     }
