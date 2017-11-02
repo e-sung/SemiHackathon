@@ -39,11 +39,20 @@ struct User{
         return Point(x: x, y: y)
     }
 
-//    var personalityType: PersonalityType {
-//        var result: [String: Int] = [:]
-//        for (type, score) in resultScoreByType{
-//            result[type.rawValue] = Int(score)
-//        }
-//        return result
-//    }
+    var personalityType: PersonalityType? {
+        let x = point.x
+        let y = point.y
+        if x < 0 && y > 0{
+            return .D
+        } else if x > 0 && y > 0{
+            return .I
+        } else if x > 0 && y < 0{
+            return .S
+        } else if x < 0 && y < 0{
+            return .C
+        } else{
+            return nil
+        }
+        
+    }
 }

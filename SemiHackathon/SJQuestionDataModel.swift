@@ -71,8 +71,8 @@ struct Question{
 }
 
 struct Result{
-    var title: String?
-    var content: String?
+    var title: String = ""
+    var content: String = ""
     init(data: [String: String]){
         if let title = data["title"]{
             self.title = title

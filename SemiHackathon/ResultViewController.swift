@@ -48,6 +48,12 @@ class ResultViewController: UIViewController {
 //        user.increaseScore(of: .C)
 //        user.increaseScore(of: .D)
         
+        if let userResult = user.personalityType{
+            if let result = DataHandler.results.getResultData(of: userResult){
+                print(result)
+            }
+        }
+        
         coordinates.addPoint(point: user.point)
         print(user.point)
         mainView.draw(coordinates: coordinates)
