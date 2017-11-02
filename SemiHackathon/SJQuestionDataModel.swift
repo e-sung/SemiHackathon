@@ -15,6 +15,7 @@ enum PersonalityType: String{
     case C = "c"
 }
 
+
 class DataHandler{
     static var main = DataHandler()
     static var results = ResultDataModel()
