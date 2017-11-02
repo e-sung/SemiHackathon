@@ -15,9 +15,9 @@ enum PersonalityType: String{
     case C = "c"
 }
 
-class QuestionDataHandler{
-    static var main = QuestionDataHandler()
-    
+class DataHandler{
+    static var main = DataHandler()
+    static var results = ResultDataModel()
     //각 문항을 담고 있는 배열
     
     var questions: [Question] = []
@@ -67,5 +67,59 @@ struct Question{
                 break
             }
         }
+    }
+}
+
+struct Result{
+    var title: String?
+    var content: String?
+    init(data: [String: String]){
+        if let title = data["title"]{
+            self.title = title
+        }
+        if let content = data["msg"]{
+            self.content = content
+        }
+    }
+}
+
+struct ResultDataModel{
+    private var results: [String: Result] = [:]
+    fileprivate init(){
+        loadData()
+    }
+    mutating func loadData(){
+        if let path = Bundle.main.path(forResource: "resultList", ofType: "plist"){
+            print("adding result")
+            if let dict = NSDictionary(contentsOfFile: path)  as? [String: [String: Any]]{
+                for (type, result) in dict{
+                    if let result = result as? [String: String]{
+                        results[type] = Result(data: result)
+                        print("adding result")
+                    }
+                }
+            }
+        }
+    }
+    func getResultData(of type: PersonalityType) -> Result?{
+        switch type {
+        case .D:
+            if let result = results[PersonalityType.D.rawValue]{
+                return result
+            }
+        case .I:
+            if let result = results[PersonalityType.I.rawValue]{
+                return result
+            }
+        case .S:
+            if let result = results[PersonalityType.S.rawValue]{
+                return result
+            }
+        case .C:
+            if let result = results[PersonalityType.C.rawValue]{
+                return result
+            }
+        }
+        return nil
     }
 }
