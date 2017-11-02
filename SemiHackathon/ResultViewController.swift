@@ -72,6 +72,8 @@ class ResultViewController: UIViewController {
         if let userResult = User.main.personalityType{
             if let result = DataHandler.results.getResultData(of: userResult){
                 textView.text = result.title + "\n" + result.content
+            }else{
+                textView.text = "애매모호합니다."
             }
         }
         
@@ -102,7 +104,7 @@ class ResultViewController: UIViewController {
         
         view.addSubview(returnToMainScreenButton)
         returnToMainScreenButton.anchor(top: textView.bottomAnchor, left: coordinatesView.leftAnchor, bottom: view.bottomAnchor, right: coordinatesView.rightAnchor, topSpacing: 20, leftSpacing: 0, bottomSpacing: 30, rightSpacing: 0, width: nil, height: 50)
-        textView.setContentOffset(.zero, animated: true)
+        textView.textContainerInset = UIEdgeInsetsMake(30, 0, 0, 0)
         
         //버튼 액션 연결
         returnToMainScreenButton.addTarget(self, action: #selector(returnToMainScreen), for: .touchUpInside)
