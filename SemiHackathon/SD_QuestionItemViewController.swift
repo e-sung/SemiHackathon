@@ -1,5 +1,5 @@
 //
-//  MultipleChoiceViewController.swift
+//  SD_QuestionItemViewController.swift
 //  SemiHackathon
 //
 //  Created by esung on 2017. 11. 2..
@@ -8,20 +8,12 @@
 
 import UIKit
 
-class SD_MultipleChoiceViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+class SD_QuestionItemViewController: UIViewController {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
-        return cell
-        
-    }
-    
-    @IBOutlet weak var collectionView:UICollectionView!
-    
+    @IBOutlet weak var q1Button:UIButton!
+    @IBOutlet weak var q2Button:UIButton!
+    @IBOutlet weak var q3Button:UIButton!
+    @IBOutlet weak var q4Button:UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
