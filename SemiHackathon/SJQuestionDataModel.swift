@@ -70,18 +70,7 @@ struct Question{
     }
 }
 
-struct Result{
-    var title: String = ""
-    var content: String = ""
-    init(data: [String: String]){
-        if let title = data["title"]{
-            self.title = title
-        }
-        if let content = data["msg"]{
-            self.content = content
-        }
-    }
-}
+
 
 struct ResultDataModel{
     private var results: [String: Result] = [:]
@@ -121,5 +110,18 @@ struct ResultDataModel{
             }
         }
         return nil
+    }
+}
+
+struct Result{
+    var title: String = ""
+    var content: String = ""
+    init(data: [String: String]){
+        if let title = data["title"]{
+            self.title = title
+        }
+        if let content = data["msg"]{
+            self.content = content
+        }
     }
 }

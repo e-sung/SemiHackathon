@@ -17,6 +17,17 @@ struct User{
         resultScoreByType[type]! += 1
     }
     
+    private var guess: String = ""
+    
+    var myGuess: String {
+        get{
+            return guess
+        }
+        set{
+            guess = newValue
+        }
+    }
+    
     var point: Point{
         var x: CGFloat = 0
         var y: CGFloat = 0
