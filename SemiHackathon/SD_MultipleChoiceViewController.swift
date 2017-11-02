@@ -15,9 +15,16 @@ class SD_MultipleChoiceViewController: UIViewController, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! SD_QuestionCell
+        cell.setClosure {
+            let offset = CGPoint(x: CGFloat(indexPath.row + 1) * cell.frame.width, y: 0)
+            collectionView.setContentOffset(offset, animated: true)
+        }
         return cell
-        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return collectionView.frame.size
     }
     
     @IBOutlet weak var collectionView:UICollectionView!
@@ -25,6 +32,8 @@ class SD_MultipleChoiceViewController: UIViewController, UICollectionViewDataSou
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.delegate = self
+        collectionView.dataSource = self
 
         // Do any additional setup after loading the view.
     }
